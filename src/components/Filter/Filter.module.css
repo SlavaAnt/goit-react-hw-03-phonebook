@@ -1,0 +1,15 @@
+.filterLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+.filterInput {
+  width: 170px;
+  margin-top: 10px;
+}

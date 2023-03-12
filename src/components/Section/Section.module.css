@@ -1,0 +1,15 @@
+.section {
+  width: fit-content;
+  /* width: 300px; */
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(201, 202, 201, 0.695);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
