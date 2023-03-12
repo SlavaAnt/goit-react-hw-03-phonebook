@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { nanoid } from 'nanoid';
 import { Section } from 'components/Section/Section';
 import { Form } from 'components/Form/Form';
 import { Contacts } from 'components/Contacts/Contacts';
@@ -16,17 +15,6 @@ export class App extends Component {
     filter: '',
   };
 
-  // addContactInAppAfterSubmitForm = ({ name, phone }) => {
-  //   const contact = {
-  //     // id: nanoid(),
-  //     name: name,
-  //     phone: phone,
-  //   };
-  //   this.setState(prevState => ({
-  //     contacts: [contact, ...prevState.contacts],
-  //   }));
-  // };
-
   handleSubmitForm = contact => {
     if (
       this.state.contacts.some(item => {
@@ -38,8 +26,9 @@ export class App extends Component {
     }
 
     this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
+      contacts: [...contacts, contact],
     }));
+    // console.log(contact);
   };
 
   changeFilter = e => {
@@ -59,6 +48,23 @@ export class App extends Component {
       contacts: contacts.filter(({ id }) => id !== contactId),
     }));
   };
+
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem('contacts'));
+    console.log(contacts);
+
+    this.setState({ contacts: contacts });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('App componentDidUpdate');
+    console.log(prevState);
+    console.log(this.state);
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('Новий контакт');
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   render() {
     const { filter } = this.state;
