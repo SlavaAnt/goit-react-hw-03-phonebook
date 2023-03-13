@@ -10,16 +10,14 @@ export const Contacts = ({ title, contacts, onDeleteContact }) => {
       <ul>
         {contacts.map(({ id, name, phone }) => {
           return (
-            <div key={id}>
-              <li className={css.contactBox}>
-                <p>
-                  {name}: {phone}
-                </p>
-                <button onClick={() => onDeleteContact(id)} className={css.btn}>
-                  Delete
-                </button>
-              </li>
-            </div>
+            <li key={id} className={css.contactBox}>
+              <p>
+                {name}: {phone}
+              </p>
+              <button onClick={() => onDeleteContact(id)} className={css.btn}>
+                Delete
+              </button>
+            </li>
           );
         })}
       </ul>

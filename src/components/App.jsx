@@ -3,6 +3,7 @@ import { Section } from 'components/Section/Section';
 import { Form } from 'components/Form/Form';
 import { Contacts } from 'components/Contacts/Contacts';
 import { Filter } from 'components/Filter/Filter';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -15,18 +16,19 @@ export class App extends Component {
     filter: '',
   };
 
-  handleSubmitForm = contact => {
+  handleSubmitForm = ({ name, phone }) => {
     if (
       this.state.contacts.some(item => {
-        return item.name === contact.name;
+        return item.name === name;
       })
     ) {
-      alert(`${contact.name} is already in contacts`);
+      alert(`${name} is already in contacts`);
       return;
     }
+    const newContact = { id: nanoid(), name, phone };
 
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, contact],
+    this.setState(prevState => ({
+      contacts: [newContact, ...prevState.contacts],
     }));
     // console.log(contact);
   };
