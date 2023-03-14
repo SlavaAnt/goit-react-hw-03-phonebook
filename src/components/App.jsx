@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Section } from 'components/Section/Section';
-import { Form } from 'components/Form/Form';
-import { Contacts } from 'components/Contacts/Contacts';
+import { ContactForm } from 'components/ContactForm/ContactForm';
+import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { nanoid } from 'nanoid';
 
@@ -30,11 +30,10 @@ export class App extends Component {
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
     }));
-    // console.log(contact);
   };
 
   changeFilter = e => {
-    this.setState({ filter: e.target.value });
+    this.setState({ filter: e.currentTarget.value });
   };
 
   getFilterContact = () => {
@@ -53,16 +52,15 @@ export class App extends Component {
 
   componentDidMount() {
     const contacts = JSON.parse(localStorage.getItem('contacts'));
-    console.log(contacts);
+    // console.log(contacts);
 
     this.setState({ contacts: contacts });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevState);
-    console.log(this.state);
+    // console.log(prevState);
+    // console.log(this.state);
     if (this.state.contacts !== prevState.contacts) {
-      console.log('Новий контакт');
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
@@ -73,9 +71,9 @@ export class App extends Component {
 
     return (
       <Section title={'Phonebook'}>
-        <Form onSubmitProps={this.handleSubmitForm} />
+        <ContactForm onSubmitProps={this.handleSubmitForm} />
         <Filter filter={filter} onChangeFilter={this.changeFilter} />
-        <Contacts
+        <ContactList
           title={'Contacts'}
           contacts={filterContacts}
           onDeleteContact={this.deleteContact}

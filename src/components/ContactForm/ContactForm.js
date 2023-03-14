@@ -1,40 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
-import css from './Form.module.css';
+import css from './ContactForm.module.css';
 
-export class Form extends Component {
+export class ContactForm extends Component {
   state = {
-    id: nanoid(),
     name: '',
     phone: '',
   };
 
   nameId = nanoid();
   phoneId = nanoid();
-  // ----------------------------------------------------
-  // handleChangeName = e => {
-  //   console.log(e.target.value);
-  //   this.setState({ name: e.target.value });
-  // };
-  // handleChangePhone = e => {
-  //   this.setState({ phone: e.target.value });
-  // };
-  // ...................................................
-  // За допомогою патерна для форм (input) та обчислювальних властивостей об'єкту
-  // handleChangeInput = event => {
-  //   //   // console.log(event.currentTarget);
-  //   //   // console.log(event.currentTarget.name);
-  //   //   // console.log(event.currentTarget.value);
-  //   //   // this.setState({ [event.currentTarget.name]: event.currentTarget.value });
-  //   // з деструктуризацією
-  //   const { name, value } = event.currentTarget;
-  //   // console.log(event.currentTarget);
-  //   this.setState({ [name]: value });
-  // };
 
   handleChangeInput = e => {
-    // this.setState({ [e.target.name]: e.target.value });
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
@@ -89,4 +67,4 @@ export class Form extends Component {
   }
 }
 
-Form.propTypes = { onSubmitProps: PropTypes.func.isRequired };
+ContactForm.propTypes = { onSubmitProps: PropTypes.func.isRequired };

@@ -1,9 +1,6 @@
-import css from './Contacts.module.css';
+import css from './ContactList.module.css';
 
-export const Contacts = ({ title, contacts, onDeleteContact }) => {
-  // console.log(title);
-  // console.log(contacts);
-
+export const ContactList = ({ title, contacts, onDeleteContact }) => {
   return (
     <div>
       <h3 className={css.title}>{title}</h3>

@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import css from './Filter.module.css';
 
 export const Filter = ({ filter, onChangeFilter }) => {
-  // console.log(filter);
-  // console.log(onChangeFilter);
   return (
     <>
       <label className={css.filterLabel}>
