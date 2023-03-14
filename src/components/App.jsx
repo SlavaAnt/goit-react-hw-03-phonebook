@@ -38,7 +38,10 @@ export class App extends Component {
 
   getFilterContact = () => {
     const { contacts, filter } = this.state;
-    const normalizedFilter = filter.toLowerCase();
+    // console.log(contacts);
+    // console.log(filter);
+    const normalizedFilter = filter.toLocaleLowerCase();
+    console.log(normalizedFilter);
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
